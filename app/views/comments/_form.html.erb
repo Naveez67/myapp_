@@ -1,0 +1,12 @@
+<%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.text_area :body ,class:"comment_input",require: true%>
+  </p>
+  <p>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :post_id, value: @post.id %>
+  </p>
+  <p>
+    <%= form.submit class:'btn btn-primary'%>
+  </p>
+<% end %>

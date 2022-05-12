@@ -1,0 +1,25 @@
+
+<%= link_to "New Post",new_post_path ,class: 'btn btn-primary btn-lg'%>
+<div class="posts_section">
+
+<% @posts.each do |post|%>
+<h1><%= post.title %></h1>
+<div>
+<%= post.content %>
+</div>
+<div>
+<% if post.avatar.attached? %>
+<image src="<%=(url_for(post.avatar))%>">
+<% end %>
+</div>
+<br>
+<%= link_to "Read Post",post,class: 'btn btn-success btn-lg' %>
+<% if post.user == current_user%>
+<%= link_to "Edit Post",edit_post_path(post),class: 'btn btn-secondary btn-lg' %>
+<%= link_to "Delete Post",post_path(post),class: 'btn btn-danger btn-lg',
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+<% end %>
+<hr />
+<% end %>
+</div>

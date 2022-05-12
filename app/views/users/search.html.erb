@@ -1,0 +1,10 @@
+<div class="d-flex flex-column align-items-center mt-3">
+  <h1>Search results</h1>
+  
+  <% if @users.empty? %>
+  <h4>No user exist </h4>
+  
+  <% else %>
+  <%= render @users %>
+  <% end %>
+</div>

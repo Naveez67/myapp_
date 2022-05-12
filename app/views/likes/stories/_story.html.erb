@@ -1,0 +1,21 @@
+<div class="card mb-3 card_width">
+  <div class="card-header">
+     <% if story.user.avatar.attached? %>
+      <img src="<%=(url_for(story.user.avatar))%>" class="profileimage" alt=<%= story.user.name%>>
+     <% end %>
+     <%= story.user.name%>
+  </div>
+   <% if story.avatar.attached? %>
+      <img src="<%=(url_for(story.avatar))%>" class="img-fluid rounded-start" alt="...">
+    <% end %>
+  <div class="card-body">
+    <p class="card-text"><%= story.body%></p>
+    <p class="card-text"><small class="text-muted"><%=time_ago_in_words(story.created_at) %> ago</small></p>
+    <p>
+    <% if story.user.id == current_user.id%>
+        <%= link_to 'Edit', edit_story_path(story),class:"card-link" %>
+        <%= link_to 'Destroy', story,class:"card-link" , method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+    </p>
+  </div>
+</div>

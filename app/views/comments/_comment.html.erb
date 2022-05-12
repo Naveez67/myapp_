@@ -1,0 +1,24 @@
+<% if User.find(comment.user_id).avatar.attached? %>
+      <img src="<%=(url_for(User.find(comment.user_id).avatar))%>" class="profileimage" alt=""%>
+     <% end %>
+     <%= User.find(comment.user_id).name%>
+ 
+<p>
+  <strong>Comment:</strong>
+  <%= comment.body %> <br />
+  <% if Like.find_by(likeable:comment,liked_by:current_user.id)%>
+       <i class="fa-solid fa-heart red-color"></i>
+       <%= "liked"%>
+       <% else %>
+       <i class="fa-solid fa-heart white-color"></i>
+       <%=link_to 'like',comment_like_path(comment.post,comment),method: "Post"%>
+       <% end %>
+       <%= comment.likes.count %> 
+</p>
+<p>
+  <% if comment.post.user.id == current_user.id%>
+  <%= link_to 'Delete Comment', [comment.post, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</p>

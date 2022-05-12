@@ -1,0 +1,6 @@
+development:
+  cloud_name: "dgwfi4zph"
+  api_key: 862741451643937
+  api_secret: "ZeoOYEbsEgDxrPtWsQMpcC2YDX0"
+  enhance_image_tag: true
+  static_file_support: false

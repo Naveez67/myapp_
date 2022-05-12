@@ -1,0 +1,37 @@
+
+<div class="posts_section" >
+<div class="card mb-3 card_width">
+ <div class="card-header">
+   <div>
+     <% if @post.user.avatar.attached? %>
+      <img src="<%=(url_for(@post.user.avatar))%>" class="profileimage" alt=<%= @post.user.name%>>
+     <% end %>
+     <%= @post.user.name%>
+   </div>
+   <div>
+     <p class="card-text"><small class="text-muted"><%=time_ago_in_words(@post.created_at) %> ago</small></p>
+   </div>
+ </div>
+   <% if @post.avatar.attached? %>
+      <img src="<%=(url_for(@post.avatar))%>" class="img-fluid rounded-start" alt="...">
+   <% end %>
+   <div class="card-body">
+    <h3 class="card-title"><%= @post.title%></h3>
+    <p class="card-text"><%= @post.content%></p>
+    
+   </div>
+</div>
+<div class="card-footer">
+       <% if Like.find_by(likeable:@post,liked_by:current_user.id)%>
+       <i class="fa-solid fa-heart red-color"></i>
+       <%= "liked"%>
+       <% else %>
+       <i class="fa-solid fa-heart white-color"></i>
+       <%=link_to 'like',post_like_path, method: "POST"%>
+       <% end %>
+       <%= @post.likes.count %> 
+    </div>
+    <%= render @post.comments %>
+    <%= render 'comments/form' %>
+</div>
+

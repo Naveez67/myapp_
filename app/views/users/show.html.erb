@@ -1,0 +1,19 @@
+<div class="d-flex flex-row align-items-center mt-3">
+  <div >
+  <% if @user.avatar.attached? %>
+      <img src="<%=(url_for(@user.avatar))%>" class="img-fluid rounded-start" alt="...">
+   <% end %> 
+   <h5 ><%= @user.name%></h5>
+   <p ><%= @user.About%></p>
+  <div>
+  <div>
+   <% if @user.id == current_user.id %>
+   <% elsif current_user.followings.include?(@user)%>
+   <h5 ><%= button_to "Unfollow", unfollow_user_path(@user), method: "POST"  %></h5>
+   <% else %>
+   <h5 ><%= button_to "Follow", follow_user_path(@user), method: "POST"  %></h5> 
+   <% end %>
+  <div>
+
+
+</div>
