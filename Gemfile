@@ -50,6 +50,15 @@ gem 'whenever', require: false
 # gem 'thinking-sphinx'
 gem 'cloudinary'
 gem 'pg_search'
+
+#makeing changes for aws deploy  start
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-bundler'
+gem 'capistrano-rbenv'
+gem 'capistrano3-puma'
+#makeing changes end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
