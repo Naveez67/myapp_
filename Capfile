@@ -39,7 +39,8 @@ require "capistrano/rails/assets"
 require "capistrano/rails/migrations"
 require "capistrano/rbenv"
 require 'capistrano/puma'
-install_plugin Capistrano::Puma //you have to add this
+install_plugin Capistrano::Puma 
 #aws changes end here
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
+set :rbenv_ruby, '2.7.2'  

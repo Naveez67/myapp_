@@ -59,3 +59,11 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+role :app, %w{deploy_user@54.92.195.72}
+role :web, %w{deploy_user@54.92.195.72}
+role :db,  %w{deploy_user@54.92.195.72}
+set :ssh_options, {
+   keys: %w(/home/dev/Downloads/new/Naveez-demo.pem),
+   forward_agent: false,
+   auth_methods: %w(publickey password)
+ }
